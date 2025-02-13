@@ -38,10 +38,20 @@ jobs:
           ls -la
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          echo "Installing dependencies..."
+          npm ci
+          echo "Dependencies installed successfully"
 
       - name: Build project
-        run: npm run build
+        run: |
+          echo "Starting build process..."
+          npm run build
+          if [ ! -d "dist" ]; then
+            echo "Error: dist directory was not created"
+            exit 1
+          fi
+          echo "Build completed successfully"
 
       - name: Debug - List dist directory
         run: |
@@ -49,8 +59,8 @@ jobs:
           pwd
           echo "\nContents of current directory:"
           ls -la
-          echo "\nContents of dist directory (if exists):"
-          ls -la dist || echo "dist directory does not exist"
+          echo "\nContents of dist directory:"
+          ls -la dist
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
