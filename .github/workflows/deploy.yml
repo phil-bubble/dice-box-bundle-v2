@@ -6,7 +6,7 @@ on:
       - main
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -32,6 +32,17 @@ jobs:
 
       - name: Build project
         run: npm run build
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            dist/dice-box.bundle.js
+            dist/assets/dice-box/ammo/ammo.wasm.wasm
+          tag_name: v${{ github.run_number }}
+          draft: false
+          prerelease: false
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

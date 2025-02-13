@@ -13,7 +13,7 @@ module.exports = {
       export: 'default'
     },
     globalObject: 'this',
-    publicPath: '/'  // Ensure proper path resolution
+    publicPath: '/'
   },
   plugins: [
     new CopyPlugin({
@@ -24,11 +24,25 @@ module.exports = {
         },
         {
           from: path.resolve(__dirname, 'node_modules/@3d-dice/dice-box/dist/assets/ammo/ammo.wasm.wasm'),
-          to: path.resolve(__dirname, 'dist/assets/dice-box/ammo/ammo.wasm.wasm')  // Match the expected path
+          to: path.resolve(__dirname, 'dist/assets/dice-box/ammo/ammo.wasm.wasm')
         }
       ]
     })
   ],
+  module: {
+    rules: [
+      {
+        test: /\.wasm$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/dice-box/ammo/[name][ext]'
+        }
+      }
+    ]
+  },
+  experiments: {
+    asyncWebAssembly: true
+  },
   devServer: {
     headers: {
       "Access-Control-Allow-Origin": "*",
