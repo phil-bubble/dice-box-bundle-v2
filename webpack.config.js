@@ -22,8 +22,8 @@ module.exports = {
           to: path.resolve(__dirname, 'dist/assets/dice-box/themes')
         },
         {
-          from: path.resolve(__dirname, 'node_modules/@3d-dice/dice-box/dist/assets/ammo'),
-          to: path.resolve(__dirname, 'dist/assets/ammo')
+          from: path.resolve(__dirname, 'node_modules/@3d-dice/dice-box/dist/assets/ammo/ammo.wasm.wasm'),
+          to: path.resolve(__dirname, 'dist/assets/ammo/ammo.wasm')
         }
       ]
     })
