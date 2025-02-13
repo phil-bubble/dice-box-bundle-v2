@@ -4,7 +4,7 @@
   "description": "Bundled 3D dice roller with themes for Bubble.io",
   "main": "dist/dice-box.bundle.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --mode production",
     "dev": "webpack serve --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
