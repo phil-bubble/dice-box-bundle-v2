@@ -2,6 +2,18 @@
 
 A bundled version of [@3d-dice/dice-box](https://github.com/3d-dice/dice-box) with all available themes, specifically built for Bubble.io plugins.
 
+## CDN URLs
+
+Main bundle:
+```javascript
+https://phil-bubble.github.io/dice-box-bundle-v2/dice-box.bundle.js
+```
+
+Theme assets:
+```javascript
+https://phil-bubble.github.io/dice-box-bundle-v2/assets/dice-box/themes/{theme-name}/theme.config.json
+```
+
 ## Available Themes
 - default, default-extras
 - blueGreenMetal
