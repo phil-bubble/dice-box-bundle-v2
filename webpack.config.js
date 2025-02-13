@@ -12,7 +12,8 @@ module.exports = {
       type: 'umd',
       export: 'default'
     },
-    globalObject: 'this'
+    globalObject: 'this',
+    publicPath: '/'  // Ensure proper path resolution
   },
   plugins: [
     new CopyPlugin({
@@ -23,9 +24,16 @@ module.exports = {
         },
         {
           from: path.resolve(__dirname, 'node_modules/@3d-dice/dice-box/dist/assets/ammo/ammo.wasm.wasm'),
-          to: path.resolve(__dirname, 'dist/assets/ammo/ammo.wasm')
+          to: path.resolve(__dirname, 'dist/assets/dice-box/ammo/ammo.wasm.wasm')  // Match the expected path
         }
       ]
     })
-  ]
-};
+  ],
+  devServer: {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+    }
+  }
+}
