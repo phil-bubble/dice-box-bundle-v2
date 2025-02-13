@@ -13,8 +13,7 @@ module.exports = {
       export: 'default'
     },
     globalObject: 'this',
-    publicPath: 'https://phil-bubble.github.io/dice-box-bundle-v2/',
-    chunkFilename: '[name].dice-box.bundle.js'
+    publicPath: 'https://phil-bubble.github.io/dice-box-bundle-v2/'
   },
   plugins: [
     new CopyPlugin({
@@ -46,33 +45,8 @@ module.exports = {
   },
   optimization: {
     minimize: true,
-    splitChunks: {
-      chunks: 'async',
-      minSize: 20000,
-      minRemainingSize: 0,
-      minChunks: 1,
-      maxAsyncRequests: 30,
-      maxInitialRequests: 30,
-      enforceSizeThreshold: 50000,
-      cacheGroups: {
-        defaultVendors: {
-          test: /[\\/]node_modules[\\/]/,
-          priority: -10,
-          reuseExistingChunk: true
-        },
-        default: {
-          minChunks: 2,
-          priority: -20,
-          reuseExistingChunk: true
-        }
-      }
-    }
-  },
-  devServer: {
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
-    }
+    // Disable code splitting entirely
+    splitChunks: false,
+    runtimeChunk: false
   }
 }
